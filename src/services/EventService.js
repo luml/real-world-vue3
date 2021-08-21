@@ -1,12 +1,12 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-  baseURL: 'https://my-json-server.typicode.com/Code-Pop/Real-World_Vue-3',
+  baseURL: 'https://my-json-server.typicode.com/luml/real-world-vue3',
   withCredentials: false,
   headers: {
     Accept: 'application/json',
-    'Content-Type': 'application/json'
-  }
+    'Content-Type': 'application/json',
+  },
 })
 
 export default {
@@ -15,5 +15,5 @@ export default {
   },
   getEvent(id) {
     return apiClient.get('/events/' + id)
-  }
+  },
 }

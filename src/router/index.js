@@ -28,8 +28,8 @@ const routes = [
   },
   {
     path: '/:pathMatch(.*)',
-    component: NotFoundComponent
-  }
+    component: NotFoundComponent,
+  },
 ]
 
 const router = createRouter({
