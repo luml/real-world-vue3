@@ -6,6 +6,15 @@
   <router-view />
 </template>
 
+<script>
+import "animate.css"
+export default {
+  setup() {
+    
+  },
+}
+</script>
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
