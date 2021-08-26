@@ -8,8 +8,14 @@
 <script>
 export default {
     props: ['event'],
+    inject: ['GStore'],
     methods: {
       register() {
+        // After a API call
+        this.GStore.flashMessage = 'You are successfully registered for' + this.event.title
+        setTimeout(() => {
+          this.GStore.flashMessage = ''
+        }, 2000)
         this.$router.push({
           name: 'EventDetails'
         })

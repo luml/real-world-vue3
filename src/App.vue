@@ -1,14 +1,20 @@
 <template>
+<div id="app">
+  <div id="flashMessage" v-if="GStore.flashMessage">
+    {{ GStore.flashMessage }}
+  </div>
   <div id="nav">
     <router-link :to="{ name: 'EventList' }">Events</router-link> |
     <router-link :to="{ name: 'About' }">About</router-link>
   </div>
   <router-view />
+</div>
 </template>
 
 <script>
 import "animate.css"
 export default {
+  inject: ['GStore'],
   setup() {
     
   },
@@ -16,6 +22,17 @@ export default {
 </script>
 
 <style>
+@keyframes purplefade {
+  from {
+    background: purple;
+  }
+  to {
+    background: transparent;
+  }
+}
+#flashMessage {
+  animation: purplefade 2s;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
