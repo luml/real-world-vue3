@@ -23,8 +23,6 @@
 // @ is an alias to /src
 import EventCard from "@/components/EventCard.vue";
 import EventService from "@/services/EventService.js";
-import { watchEffect } from 'vue'
-import NProgress from 'nprogress'
 
 export default {
   name: "EventList",
@@ -39,7 +37,6 @@ export default {
     }
   },
   beforeRouteEnter(to, from, next) {
-    NProgress.start()
     EventService.getEvents(2, parseInt(to.query.page) || 1)
     .then(response => {
       next(comp => {
@@ -50,22 +47,15 @@ export default {
     .catch(() => {
       next({ name: 'NetworkError'})
     })
-    .finally(() => {
-      NProgress.done()
-    })
   },
   beforeRouteUpdate(to) {
-    NProgress.start()
-    EventService.getEvents(2, parseInt(to.query.page) || 1)
+    return EventService.getEvents(2, parseInt(to.query.page) || 1)
     .then(response => {
       this.events = response.data;
       this.totalEvents = response.headers['x-total-count']
     })
     .catch(() => {
       return { name: 'NetworkError' }
-    })
-    .finally(() => {
-      NProgress.done()
     })
   },
   computed: {
