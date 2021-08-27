@@ -1,23 +1,21 @@
 <template>
-<div id="app">
-  <div id="flashMessage" v-if="GStore.flashMessage">
-    {{ GStore.flashMessage }}
+  <div id="app">
+    <div id="flashMessage" v-if="GStore.flashMessage">
+      {{ GStore.flashMessage }}
+    </div>
+    <div id="nav">
+      <router-link :to="{ name: 'EventList' }">Events</router-link> |
+      <router-link :to="{ name: 'About' }">About</router-link>
+    </div>
+    <router-view />
   </div>
-  <div id="nav">
-    <router-link :to="{ name: 'EventList' }">Events</router-link> |
-    <router-link :to="{ name: 'About' }">About</router-link>
-  </div>
-  <router-view />
-</div>
 </template>
 
 <script>
-import "animate.css"
+import 'animate.css'
 export default {
   inject: ['GStore'],
-  setup() {
-    
-  },
+  setup() {},
 }
 </script>
 
