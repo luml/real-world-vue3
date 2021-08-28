@@ -27,3 +27,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 !repo (https://github.com/Code-Pop/Real-World_Vue-3/tree/L6-end, https://github.com/Code-Pop/Vuex_Fundamentals)
 !mock data: (https://github.com/luml/real-world-vue3/blob/master/db.json)
 !JSON server: (https://my-json-server.typicode.com/)
+:blog (https://www.vuemastery.com/blog/refactoring-vuex-with-map-helpers-and-modules)
