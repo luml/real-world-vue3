@@ -47,6 +47,7 @@
 
 <script>
 import { v4 as uuidv4 } from 'uuid'
+import { mapState, mapActions } from 'vuex'
 export default {
   data() {
     return {
@@ -71,20 +72,23 @@ export default {
       },
     }
   },
+  computed: {
+    ...mapState(['user']),
+  },
   methods: {
+    ...mapActions('event', ['createEvent']),
     onSubmit() {
       const event = {
         ...this.event,
         id: uuidv4(),
-        organizer: this.$store.state.user,
+        organizer: this.user.userInfo.name,
       }
-      this.$store
-        .dispatch('createEvent', event)
-        .then((response) => {
+      this.createEvent(event)
+        .then(() => {
           this.$router.push({
             name: 'EventDetails',
             params: {
-              id: response.id,
+              id: event.id,
             },
           })
         })
