@@ -11,19 +11,18 @@ export default {
   name: 'EventDetails',
   props: ['id'],
   created() {
-    this.$store.dispatch('fetchEvent', this.id)
-      .catch(error => {
-        this.$router.push({
-          name: 'ErrorDisplay',
-          params: { error: error }
-        })
+    this.$store.dispatch('fetchEvent', this.id).catch((error) => {
+      this.$router.push({
+        name: 'ErrorDisplay',
+        params: { error: error },
       })
+    })
   },
   computed: {
     event() {
       return this.$store.state.event
-    }
-  }
+    },
+  },
 }
 </script>
 

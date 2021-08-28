@@ -37,7 +37,7 @@ const routes = [
     path: '/error/:error',
     name: 'ErrorDisplay',
     props: true,
-    component: ErrorDisplay
+    component: ErrorDisplay,
   },
   {
     path: '/:pathMatch(.*)',
