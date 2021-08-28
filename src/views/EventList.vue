@@ -7,29 +7,27 @@
 
 <script>
 // @ is an alias to /src
-import EventCard from "@/components/EventCard.vue";
-import EventService from "@/services/EventService.js";
+import EventCard from '@/components/EventCard.vue'
 
 export default {
-  name: "EventList",
+  name: 'EventList',
   components: {
     EventCard,
   },
-  data() {
-    return {
-    events: null
-    }
-  },
   created() {
-    EventService.getEvents()
-      .then(response => {
-        this.events = response.data;
+    this.$store.dispatch('fetchEvents').catch((error) => {
+      this.$router.push({
+        name: 'ErrorDisplay',
+        params: { error: error },
       })
-      .catch(error => {
-        console.log(error)
-      })
-  }
-};
+    })
+  },
+  computed: {
+    events() {
+      return this.$store.state.events
+    },
+  },
+}
 </script>
 
 <style scoped>

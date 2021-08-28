@@ -1,8 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import EventList from '../views/EventList.vue'
 import EventDetails from '../views/EventDetails.vue'
+import EventCreate from '../views/EventCreate.vue'
 import About from '../views/About.vue'
 import NotFoundComponent from '../views/NotFoundComponent.vue'
+import ErrorDisplay from '../views/ErrorDisplay.vue'
 
 const routes = [
   {
@@ -17,6 +19,11 @@ const routes = [
     component: EventDetails,
   },
   {
+    path: '/event/create',
+    name: 'EventCreate',
+    component: EventCreate,
+  },
+  {
     path: '/about',
     name: 'About',
     component: About,
@@ -25,6 +32,12 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     // component: () =>
     //   import(/* webpackChunkName: "about" */ '../views/About.vue'),
+  },
+  {
+    path: '/error/:error',
+    name: 'ErrorDisplay',
+    props: true,
+    component: ErrorDisplay
   },
   {
     path: '/:pathMatch(.*)',
