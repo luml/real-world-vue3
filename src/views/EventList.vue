@@ -5,31 +5,32 @@
   </div>
 </template>
 
-<script>
-// @ is an alias to /src
-import EventCard from "@/components/EventCard.vue";
-import EventService from "@/services/EventService.js";
+<script lang="ts">
+import { defineComponent } from 'vue'
+import EventCard from '../components/EventCard.vue'
+import EventService from '../services/EventService'
+import { EventItem } from '../types'
 
-export default {
-  name: "EventList",
+export default defineComponent({
+  name: 'EventList',
   components: {
     EventCard,
   },
   data() {
     return {
-    events: null
+      events: [] as EventItem[],
     }
   },
   created() {
     EventService.getEvents()
-      .then(response => {
-        this.events = response.data;
+      .then((response) => {
+        this.events = response.data
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error)
       })
-  }
-};
+  },
+})
 </script>
 
 <style scoped>

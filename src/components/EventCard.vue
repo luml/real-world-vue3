@@ -7,13 +7,18 @@
   </router-link>
 </template>
 
-<script>
-export default {
-  name: "EventCard",
+<script lang="ts">
+import { defineComponent, PropType } from 'vue'
+import { EventItem } from '../types'
+export default defineComponent({
+  name: 'EventCard',
   props: {
-    event: Object,
+    event: {
+      type: Object as PropType<EventItem>,
+      required: true,
+    },
   },
-};
+})
 </script>
 
 <style scoped>
